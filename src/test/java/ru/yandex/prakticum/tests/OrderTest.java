@@ -1,20 +1,17 @@
-import framework.Browser;
-import org.junit.After;
+package ru.yandex.prakticum.tests;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import steps.MainPageSteps;
-import steps.OrderSteps;
+import ru.yandex.prakticum.BaseTest;
 
 import java.time.LocalDate;
 
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
-public class OrderTest {
+public class OrderTest extends BaseTest {
 
-    private final MainPageSteps mainPageSteps = new MainPageSteps();
-    private final OrderSteps orderSteps = new OrderSteps();
     private final int orderButtonIndex;
     private final String name;
     private final String surname;
@@ -59,10 +56,5 @@ public class OrderTest {
         orderSteps.clickOrderButton();
         orderSteps.clickApproveButton();
         assertTrue("Заказ не подтвержден", orderSteps.isOrderConfirmed());
-    }
-
-    @After
-    public void cleanUp() {
-        Browser.closeInstance();
     }
 }

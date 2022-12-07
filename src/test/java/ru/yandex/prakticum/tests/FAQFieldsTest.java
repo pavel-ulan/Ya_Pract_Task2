@@ -1,18 +1,14 @@
-package ru.yandex.prakticum;
+package ru.yandex.prakticum.tests;
 
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import ru.yandex.prakticum.framework.Browser;
-import ru.yandex.prakticum.steps.MainPageSteps;
+import ru.yandex.prakticum.BaseTest;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class FAQFieldsTest {
-    private final MainPageSteps mainPageStep = new MainPageSteps();
-
+public class FAQFieldsTest extends BaseTest {
     private final int faqIndex;
     private final String expectedFaqQuestionText;
     private final String expectedFaqAnswerText;
@@ -39,17 +35,12 @@ public class FAQFieldsTest {
 
     @Test
     public void FAQFieldsTextTest() {
-        mainPageStep.open();
-        mainPageStep.acceptCookie();
-        mainPageStep.expandFaqQuestionWithIndex(faqIndex);
+        mainPageSteps.open();
+        mainPageSteps.acceptCookie();
+        mainPageSteps.expandFaqQuestionWithIndex(faqIndex);
         assertEquals("Ошибка в тексте вопроса",
-                expectedFaqQuestionText, mainPageStep.getQuestionTextFromFaqUnderIndex(faqIndex));
+                expectedFaqQuestionText, mainPageSteps.getQuestionTextFromFaqUnderIndex(faqIndex));
         assertEquals("Ошибка в тексте ответа",
-                expectedFaqAnswerText, mainPageStep.getAnswerTextFromFaqUnderIndex(faqIndex));
-    }
-
-    @After
-    public void cleanUp() {
-        Browser.closeInstance();
+                expectedFaqAnswerText, mainPageSteps.getAnswerTextFromFaqUnderIndex(faqIndex));
     }
 }

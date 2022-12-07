@@ -1,20 +1,15 @@
-package ru.yandex.prakticum;
+package ru.yandex.prakticum.tests;
 
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import ru.yandex.prakticum.framework.Browser;
-import ru.yandex.prakticum.steps.MainPageSteps;
-import ru.yandex.prakticum.steps.OrderSteps;
+import ru.yandex.prakticum.BaseTest;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class OrderFieldsTest {
+public class OrderFieldsTest extends BaseTest {
 
-    private final MainPageSteps mainPageSteps = new MainPageSteps();
-    private final OrderSteps orderSteps = new OrderSteps();
     private final int orderButtonIndex;
     private final int errorIndex;
     private final String errorMessage;
@@ -44,10 +39,5 @@ public class OrderFieldsTest {
         orderSteps.clickNextButton();
         orderSteps.fillAddressField(Integer.toString(orderButtonIndex));
         assertEquals("Сообщения об ошибке нет или оно неверное", errorMessage, orderSteps.getErrorMessagesUnderIndex(errorIndex));
-    }
-
-    @After
-    public void cleanUp() {
-        Browser.closeInstance();
     }
 }
