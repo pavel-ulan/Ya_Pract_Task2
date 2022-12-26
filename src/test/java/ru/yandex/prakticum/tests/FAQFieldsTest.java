@@ -32,7 +32,7 @@ public class FAQFieldsTest extends BaseTest {
         this.faqModel = faqModel;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Проверка {0}")
     public static List<FAQModel> getAccordionText() {
         return SCOOTER_FAQS;
     }

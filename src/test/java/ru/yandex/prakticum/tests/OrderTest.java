@@ -25,7 +25,7 @@ public class OrderTest extends BaseTest {
 
 
     public OrderTest(OrderModel order) {
-       this.order = order;
+        this.order = order;
     }
 
     @Parameterized.Parameters

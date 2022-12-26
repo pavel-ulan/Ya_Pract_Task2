@@ -8,7 +8,7 @@ public class OrderSteps {
     private final WebDriver driver = Browser.getInstance();
     private OrderPage orderPage = new OrderPage(driver);
 
-    public void fillOrderFormOnFirstPage(String name, String surname, String address, String metroStationName, String phoneNumber){
+    public void fillOrderFormOnFirstPage(String name, String surname, String address, String metroStationName, String phoneNumber) {
         orderPage.setName(name);
         orderPage.setSurname(surname);
         orderPage.setAddress(address);
@@ -16,39 +16,38 @@ public class OrderSteps {
         orderPage.setPhoneNumber(phoneNumber);
     }
 
-    public void fillOrderFormOnSecondPage(String deliveryDate, String rentPeriod, String scooterColour, String commentToCourier){
+    public void fillOrderFormOnSecondPage(String deliveryDate, String rentPeriod, String scooterColour, String commentToCourier) {
         orderPage.selectDeliveryDate(deliveryDate);
         orderPage.selectRentPeriod(rentPeriod);
         orderPage.selectScooterColour(scooterColour);
         orderPage.setCommentToCourier(commentToCourier);
     }
 
-    public void fillAddressField(String address){
+    public void fillAddressField(String address) {
         orderPage.setAddress(address);
     }
 
-    public void clickNextButton(){
+    public void clickNextButton() {
         orderPage.clickNextButton();
     }
 
-    public void clickOrderButton(){
+    public void clickOrderButton() {
         orderPage.clickOrderButton();
     }
 
-    public void clickApproveButton(){
+    public void clickApproveButton() {
         orderPage.clickApproveButton();
     }
 
-    public void clickScooterLink(){
+    public void clickScooterLink() {
         orderPage.clickScooterLink();
     }
 
-    public boolean isOrderConfirmed (){
+    public boolean isOrderConfirmed() {
         return orderPage.getConfirmationText().contains("Заказ оформлен");
     }
 
-    public String getErrorMessagesUnderIndex(int msgIndex){
+    public String getErrorMessagesUnderIndex(int msgIndex) {
         return orderPage.getErrorMessageTextUnderIndex(msgIndex);
     }
-
 }

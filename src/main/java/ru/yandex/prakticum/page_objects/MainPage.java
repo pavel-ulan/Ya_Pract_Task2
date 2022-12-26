@@ -35,8 +35,17 @@ public class MainPage {
     // Кнопки вопросов о важном
     private By questionButtons = By.className("accordion__item");
 
+    // Поле с текстом вопроса
+    private By faqQuestionText = By.className("accordion__button");
+
+    // Поле с текстом ответа
+    private By faqAnswerText = By.className("accordion__panel");
+
     // Кнопки "Заказать" в хедере страницы и middle button
     private By orderButtons = By.xpath(".//button[contains(@class, 'Button_Button__ra12g') and (text() = 'Заказать')]");
+
+    // Окно "Такого заказа нет"
+    private By noOrderFrame = By.xpath(".//img[@alt = 'Not found']");
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -63,11 +72,11 @@ public class MainPage {
     }
 
     public String getFaqQuestionByIndex(int index) {
-        return driver.findElements(questionButtons).get(index).findElement(By.className("accordion__button")).getText();
+        return driver.findElements(questionButtons).get(index).findElement(faqQuestionText).getText();
     }
 
     public String getFaqAnswerByIndex(int index) {
-        return driver.findElements(questionButtons).get(index).findElement(By.className("accordion__panel")).getText();
+        return driver.findElements(questionButtons).get(index).findElement(faqAnswerText).getText();
     }
 
     public void clickYaLinkButton() {
@@ -87,6 +96,6 @@ public class MainPage {
     }
 
     public boolean isOrderExist() {
-        return new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//img[@alt = 'Not found']"))).isDisplayed();
+        return new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.presenceOfElementLocated(noOrderFrame)).isDisplayed();
     }
 }

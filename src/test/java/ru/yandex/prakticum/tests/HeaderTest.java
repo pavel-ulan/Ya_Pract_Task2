@@ -13,6 +13,7 @@ import static ru.yandex.prakticum.framework.Const.YA_PAGE_URL;
 public class HeaderTest extends BaseTest {
 
     private static final int INVALID_ORDER_NUMBER = 0;
+
     @Test
     public void yaLinkTest() {
         mainPageSteps.open();

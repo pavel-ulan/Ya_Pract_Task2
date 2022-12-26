@@ -16,9 +16,9 @@ public class Browser {
 
     static {
         Properties properties = new Properties();
-        try (FileReader f = new FileReader("src/test/resources/browser.properties")){
+        try (FileReader f = new FileReader("src/test/resources/browser.properties")) {
             properties.load(f);
-            System.setProperty(PROPERTY,properties.getProperty(PROPERTY));
+            System.setProperty(PROPERTY, properties.getProperty(PROPERTY));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -41,7 +41,7 @@ public class Browser {
     }
 
     public static void closeInstance() {
-            INSTANCE.quit();
-            INSTANCE = null;
+        INSTANCE.quit();
+        INSTANCE = null;
     }
 }
